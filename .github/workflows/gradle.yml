@@ -64,7 +64,7 @@ jobs:
         run: ./gradlew checkstyleTest
 
       - name: Check report output
-        run: app/scripts/check_lint_output.sh
+        run: chmod +x app/scripts/check_lint_output.sh && app/scripts/check_lint_output.sh
 
   dependency-submission:
 
