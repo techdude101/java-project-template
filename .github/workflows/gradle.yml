@@ -62,6 +62,10 @@ jobs:
 
       - name: Check style - Tests
         run: ./gradlew checkstyleTest
+
+      - name: Check report output
+        run: chmod +x app/scripts/check_lint_output.sh && app/scripts/check_lint_output.sh
+
   dependency-submission:
 
     runs-on: ubuntu-latest
