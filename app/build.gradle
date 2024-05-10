@@ -10,10 +10,12 @@ plugins {
     id 'application'
     id 'java'
     id 'checkstyle'
+    id 'jacoco'
+    id 'org.barfuin.gradle.jacocolog' version '3.1.0'
 }
 
 ext {
-    junitVersion = '4.13.2'
+    junitVersion = '5.10.2'
     checkstyleVersion = '10.16.0'
 }
 
@@ -23,7 +25,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "${junitVersion}"
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitVersion}"
 
     implementation 'com.google.guava:guava:32.1.1-jre'
 
@@ -51,4 +55,21 @@ apply plugin: 'checkstyle'
 checkstyle {
     toolVersion "${checkstyleVersion}"
     configFile file("config/checkstyle/checkstyle.xml")
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
+    }
 }
