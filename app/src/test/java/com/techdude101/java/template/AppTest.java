@@ -9,6 +9,9 @@ import org.junit.Test;
  * App unit tests example.
  */
 public class AppTest {
+  /**
+   * Test the app displays a greeting.
+   */
   //CHECKSTYLE.OFF: AbbreviationAsWordInName
   @Test
   public void appHasAGreeting() {
@@ -17,8 +20,11 @@ public class AppTest {
     assertNotNull("app should have a greeting", classUnderTest.getGreeting());
   }
 
+  /**
+   * Test the greeting is correct.
+   */
   @Test
-  public void appGreetingICorrect() {
+  public void appGreetingIsCorrect() {
     App classUnderTest = new App();
     assertEquals("Hello World!", classUnderTest.getGreeting());
   }
