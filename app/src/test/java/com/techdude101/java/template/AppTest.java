@@ -28,4 +28,13 @@ public class AppTest {
     App classUnderTest = new App();
     assertEquals("Hello World!", classUnderTest.getGreeting());
   }
+
+  /**
+   * Test the main method.
+   */
+  @Test
+  public void appRuns() {
+    String args[] = {"", ""};
+    App.main(args);
+  }
 }
